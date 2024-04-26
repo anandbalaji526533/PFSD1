@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - Astrology Website</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file, if available -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFF00;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFA500;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        address {
+            font-style: normal;
+        }
+        footer {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Contact Information</h2>
+            <p>
+                Feel free to reach out to us with any questions, comments, or requests. Our team is here to assist you with any astrology-related inquiries.
+            </p>
+
+            <address>
+                Email: <a href="gunupudianandbalaji@gmail.com">gunupudianandbalaji@gmail.com</a><br>
+                Address: divan cheruvu,East Godavari district,AP
+            </address>
+        </section>
+
+        <section>
+            <h2>Contact Form</h2>
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Your Astrology Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Your Future</title>
+    <style>
+        body {
+            background-color: #0e1a36;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #2b4f81;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .card-title {
+            font-size: 28px;
+            color: #f7d700;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .predict-button {
+            background-color: #f7d700;
+            color: #0e1a36;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .predict-button:hover {
+            background-color: #e0aa00;
+        }
+        #sign-result {
+            font-size: 20px;
+            color: #f7d700;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #0e1a36;
+            color: #f7d700;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body id="bg" style="background-image: url('{% static 'images/feedback.jpg' %}');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Predict Your Future</h1>
+                        <form id="sign-form" class="text-center">
+                            <div class="form-group">
+                                <label for="day">Enter the day of your birth:</label>
+                                <input type="number" class="form-control" id="day" name="day" placeholder="Day" min="1" max="31">
+                            </div>
+                            <div class="form-group">
+                                <label for="month">Enter the month of your birth:</label>
+                                <input type="number" class="form-control" id="month" name="month" placeholder="Month" min="1" max="12">
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Enter the year of your birth:</label>
+                                <input type="number" class="form-control" id="year" name="year" placeholder="Year" min="1900" max="2099">
+                            </div>
+                            <button type="button" class="btn predict-button" onclick="predictSign()">Predict Sign</button>
+                        </form>
+                        <p id="sign-result"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2023 Predict Your Future
+    </div>
+
+    <!-- Add JavaScript to predict the sign -->
+    <script>
+        function predictSign() {
+            var day = parseInt(document.getElementById("day").value);
+            var month = parseInt(document.getElementById("month").value);
+
+            var astro_sign;
+
+            if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+                astro_sign = 'Capricorn';
+            } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+                astro_sign = 'Aquarius';
+            } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+                astro_sign = 'Pisces';
+            } else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+                astro_sign = 'Aries';
+            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+                astro_sign = 'Taurus';
+            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+                astro_sign = 'Gemini';
+            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+                astro_sign = 'Cancer';
+            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+                astro_sign = 'Leo';
+            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+                astro_sign = 'Virgo';
+            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+                astro_sign = 'Libra';
+            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+                astro_sign = 'Scorpio';
+            } else {
+                astro_sign = 'Sagittarius';
+            }
+
+            document.getElementById("sign-result").innerHTML = "Your Zodiac sign is: " + astro_sign;
+        }
+    </script>
+</body>
+</html>

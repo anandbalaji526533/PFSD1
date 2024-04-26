@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Open Sans', sans-serif;
+        }
+        body {
+          height: 100vh;
+          background-color: #000;
+          background-image: url('https://e0.pxfuel.com/wallpapers/992/80/desktop-wallpaper-laptop-background-cool-background-pc-pinterest-cool-background-cool-for-laptop.jpg');
+          background-size: cover;
+          background-position: center;
+        }
+        header {
+          position: relative;
+          padding: 0 2rem;
+        }
+        .navbar {
+          width: 100%;
+          height: 80px;
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .navbar a {
+          text-decoration: none;
+        }
+        .navbar .logo {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #fff;
+          cursor: pointer;
+        }
+        section#hero {
+          height: calc(100vh - 150px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: #fff;
+        }
+        .wrapper {
+          max-width: 420px;
+          width: 100%;
+          background: transparent;
+          border: 2px solid rgba(255, 255, 255, .2);
+          backdrop-filter: blur(15px);
+          box-shadow: 0 0 10px skyblue;
+          color: #fff;
+          border-radius: 10px;
+          padding: 30px 30px;
+        }
+        .wrapper h1 {
+          font-size: 36px;
+          text-align: center;
+        }
+        .wrapper .first {
+          font-size: 16px;
+          text-align: center;
+          color: skyblue;
+        }
+        .wrapper .input-box {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          margin: 30px 0;
+        }
+        .input-box input {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border: none;
+          outline: none;
+          border: 2px solid rgba(255, 255, 255, .2);
+          border-radius: 40px;
+          font-size: 16px;
+          color: #fff;
+          padding: 20px 45px 20px 20px;
+        }
+        .input-box input::placeholder {
+          text-color: #fff;
+        }
+        .input-box i {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 20px;
+        }
+        .wrapper .remember-forgot {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14.5px;
+          margin: -15px 0 15px;
+        }
+        .remember-forgot label input {
+          accent-color: #fff;
+          margin-right: 3px;
+        }
+        .remember-forgot a {
+          color: skyblue;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .remember-forgot a:hover {
+          text-decoration: underline;
+        }
+        .wrapper .btn {
+           width: 100%;
+           height: 45px;
+           background: skyblue;
+           border: none;
+           outline: none;
+           border-radius: 40px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+           cursor: pointer;
+           font-size: 16px;
+           color: #fff;
+           font-weight: 600;
+        }
+        .wrapper .register-link {
+          font-size: 14.5px;
+          text-align: center;
+          margin: 20px 0 15px;
+        }
+        .register-link p a {
+          color: orange;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .register-link p a:hover {
+          text-decoration: underline;
+        }
+    </style>
+    <title>Login-Astrology</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="{% url 'login' %}"><div class="logo">LOGO</div></a>
+        </div>
+    </header>
+    <main>
+        <section id="hero">
+            <div class="wrapper">
+                <form method="post" action="{% url 'checklogin' %}">
+                    {% csrf_token %}
+                    <h1>Login</h1>
+                    <br>
+                    <p class="first">{{ message }}</p>
+                    <div class="input-box">
+                        <input type="text" name="uname" placeholder="Username" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" name="pwd" placeholder="Password" minlength="5" maxlength="10" required>
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn" >Login</button>
+                    <div class="register-link">
+                         <p class="second">Don't have an account?
+                        <a href="{% url 'register' %}">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

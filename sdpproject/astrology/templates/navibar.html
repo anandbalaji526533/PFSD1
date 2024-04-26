@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width,initial-scale=1">
+    <title>Predict Your Future</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+     <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+      *{
+         padding:0;
+         margin:0;
+         box-sizing:border-box;
+         font-family:'Poppins',sans-serif;
+         text-decoration:none;
+
+         list-style:none;
+      }
+      :root{
+             --bg-co;or:#222327;
+             --text-color:#fff;
+             --main-color:#29fd53;
+             }
+         body{
+             min-height:100vh;
+             color: var(--bg-color);
+             color: var(--text-color);
+             }
+         header{
+             position:fixed;
+             width:100%;
+             top:0;
+             right:0;
+             z-index:1000;
+             display:flex;
+             align-items:center;
+             justify-content: space-between;
+             padding: 28px 12%'
+             transition: all .50s ease;
+
+         }
+      .logo{
+            display:flex;
+            align-items:center;
+            }
+      .logo i{
+          color: var(--main-color);
+          font-size: 28px;
+          margin-right: 3px;
+                }
+      .logo span{
+              color:var(--text-color);
+              font-size:1.7rem;
+              font-weight:600;
+                 }
+      .navbar a{
+          color:var(--textcolor);
+          font-size:1.1rem;
+          font-weight:500;
+          padding:5px;
+          margin: 0px 30px;
+          transition: all .50s ease;
+          }
+      .navbar a:hover{
+                color: var(--main-color);
+                }
+
+
+      .main{
+          display:flex;
+          align-items:center;
+          }
+      .main a{
+          margin-right: 25px;
+          margin-left:10px;
+          color:var(--text-color);
+          font-size:1.1rem;
+          font-weight:500;
+          transition: all  .50s ease;
+          }
+      .user{
+          display:flex;
+          align-items:center;
+          }
+      .user i{
+          color: var(--main-color);
+          font-size:28px;
+          margin-right:7px;
+          }
+      .main a:hover{
+          color:var(--main-color);
+          }
+      #menu-icon{
+          font-size:35px;
+          color:var(--text-color);
+          cursor:pointer;
+          z-index:1001;
+          display:none;
+          }
+      @media (max-width:1280px){
+          header{
+          padding:14px 2%;
+          transition: .2s;
+          }
+          ,navbar a{
+          padding: 5px 0;
+          margin:0px 20px;
+          }
+          }
+      @media (max-width:1280px){
+           header{
+           padding:14px 2%;
+           transition:  .2s;
+           }
+           .navbar a{
+           padding:5px 0;
+           margin: 0px 20px;
+           }
+           }
+      @media (max-width:1090px){
+          #menu-icon{
+          display:block;
+          }
+          .navbar{
+          position:absolute;
+          top:100%;
+          right:-100%;
+          width:270px;
+          height:29vh;
+          background:var(--main-color);
+          display:flex;
+          flex-direction:column;
+          justify-content:flex-start;
+          border-radius:10px;
+          transition:all .50s ease;
+          }
+          .navbar a{
+          display:block;
+          margin:12px 0;
+          padding:0px 25px;
+          transition:all .50s ease;
+          }
+          .navbar a:hover{
+          color: var(--text-color);
+          transform:translateY(5px);
+          }
+          .navbar a.active{
+          color:var(--text-color);
+          }
+          .navbar.open{
+          right:2%;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"ee58ae24fc6621effb1bf400c2ef37b8","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+    <header>
+      <a href="#" class="logo"><i class='bx bxs-home'></i><span>Logo</span></a>
+        <ul class="navbar">
+
+            <li><a  href="{% url 'home' %}" class="active">Home</a></li>
+
+            <li><a  href="{% url 'about' %}" >About</a></li>
+            <li><a  href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+        <div class="main">
+            <a href="{% url 'login' %}" class="user"><i class="ri-user-fill" ></i>Sign In</a>
+            <a href="{% url 'register' %}">Register</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+
+        </div>
+
+
+
+
+    </header>
+
+    <!--js link--->
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+        let menu=document.querySelector('#menu-icon');
+        let navbar=document.querySelector('.navbar');
+        menu.onclick=() =>{
+             menu.classList.toggle('bx-x');
+             navbar.classList.toggle('open');
+             }
+    </script>
+<br><br><br>
+<div style="text-align: center; margin-top: 10vh;">
+   <marquee> <h1 style="font-size: 3rem; color: #FF0000; font-weight: bold;">Welcome to Astrology Prediction System</h1></marquee>
+
+</div>
+
+</body>
+
+</html>
+{% block content %}
+{% endblock %}

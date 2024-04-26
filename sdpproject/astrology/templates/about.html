@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Our Astrology Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFF00;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #FFA500;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        a {
+          text-decoration:none;
+          margin: 20px;
+          font-size:25px;
+          font-style:bold;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        h1, p {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<a href="{% url 'home' %}">back</a>
+<div class="container">
+    <h1>Astrology</h1>
+    <p>
+        Astrology is a type of divination that involves the forecasting of earthly and human events through the observation and interpretation of the fixed stars, the Sun, the Moon, and the planets. Devotees believe that an understanding of the influence of the planets and stars on earthly affairs allows them to both predict and affect the destinies of individuals, groups, and nations. Although it was often regarded as a science throughout its history, astrology is widely considered today to be at odds with the findings and theories of modern Western science.
+    </p>
+
+    <h1>Nature and Significance</h1>
+    <p>
+        Astrology is a method of predicting mundane events based upon the assumption that celestial bodies, particularly the planets and stars considered in their arbitrary combinations or configurations (called constellations), in some way either determine or indicate changes in the sublunar world. The theoretical basis for this assumption lies historically in Hellenistic philosophy and radically distinguishes astrology from the celestial omina ("omens") that were first categorized and cataloged in ancient Mesopotamia. Originally, astrologers presupposed a geocentric universe in which the "planets" (including the Sun and Moon) revolve in orbits whose centers are at or near the center of the Earth and in which the stars are fixed upon a sphere with a finite radius whose center is also the center of the Earth. Later, the principles of Aristotelian physics were adopted, according to which there is an absolute division between the eternal, circular motions of the heavenly element and the limited, linear motions of the four sublunar elements: fire, air, water, earth.
+    </p>
+
+</div>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"ee58ae24fc6621effb1bf400c2ef37b8","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+</body>
+</html>

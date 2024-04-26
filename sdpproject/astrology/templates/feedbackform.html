@@ -1,0 +1,106 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        body {
+            background: linear-gradient(45deg, #fd297b, #904e95);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(to right, #ff84b0, #ff9966);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            background: linear-gradient(to right, #ffffff, #f5f5f5);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+
+        label {
+            font-size: 24px;
+            color: #ff84b0;
+            margin: 10px 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff84b0;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        button {
+            background: linear-gradient(to right, #44bd32, #02b875);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #02b875, #44bd32);
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Feedback Form</h1>
+    </center>
+    <center>
+        <form method="post" action="{% url 'feedbackform' %}">
+            {% csrf_token %}
+            <label for="Firstname">First Name:</label>
+            <input type="text" id="Firstname" name="Firstname" required>
+
+            <label for="Lastname">Last Name:</label>
+            <input type="text" id="Lastname" name="Lastname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </center>
+</body>
+
+</html>

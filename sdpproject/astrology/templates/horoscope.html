@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology - Zodiac Sign Selection</title>
+    <style>
+        body {
+            background-color: #8A2BE2; /* Violet background color */
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #1e1f26;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 75%;
+            display: flex;
+        }
+        .left-panel {
+            flex: 1;
+            border-right: 2px solid #f7d700;
+            padding: 10px;
+        }
+        .right-panel {
+            flex: 3;
+            padding: 10px;
+        }
+        .sign-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .sign-button {
+            background-color: #f7d700;
+            color: #292c35;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 49%; /* Two buttons per row */
+        }
+        .sign-button:hover {
+            background-color: #e0aa00;
+        }
+        .horoscope {
+            font-size: 18px;
+            color: #f7d700;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1 class="header">Select your zodiac sign:</h1>
+            <div class="sign-select">
+                <button class="sign-button" onclick="getHoroscope('Aries')">Aries</button>
+                <button class="sign-button" onclick="getHoroscope('Taurus')">Taurus</button>
+                <button class="sign-button" onclick="getHoroscope('Gemini')">Gemini</button>
+                <button class="sign-button" onclick="getHoroscope('Cancer')">Cancer</button>
+                <button class="sign-button" onclick="getHoroscope('Leo')">Leo</button>
+                <button class="sign-button" onclick="getHoroscope('Virgo')">Virgo</button>
+                <button class="sign-button" onclick="getHoroscope('Libra')">Libra</button>
+                <button class="sign-button" onclick="getHoroscope('Scorpio')">Scorpio</button>
+                <button class="sign-button" onclick="getHoroscope('Sagittarius')">Sagittarius</button>
+                <button class="sign-button" onclick="getHoroscope('Capricorn')">Capricorn</button>
+                <button class="sign-button" onclick="getHoroscope('Aquarius')">Aquarius</button>
+                <button class="sign-button" onclick="getHoroscope('Pisces')">Pisces</button>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div id="horoscope-result" class="horoscope"></div>
+        </div>
+    </div>
+
+    <script>
+        var horoscopes = {
+            'Aries': 'Aries (21 March – 20 April / 15 April – 15 May)\nAries, the first sign of the zodiac, is associated with new beginnings. Governed by Mars, Aries individuals are characterized by their fiery spirit. Whether it\'s the tropical or sidereal dates, they are known for their pioneering attitude. Their audacity allows them to venture where others might hesitate.',
+            'Taurus': 'Taurus (20 April – 21 May / 16 May – 15 June)\nTaurus, ruled by the gentle Venus, is synonymous with steadfastness. Both tropical and sidereal Taureans display an innate craving for stability. They find solace in consistency, often resisting abrupt changes.',
+            'Gemini': 'Gemini (21 May – 21 June / 16 June – 15 July)\nGoverned by the swift Mercury, Geminis are the communicators of the zodiac. Their minds are always buzzing, jumping from one thought to another. Geminis, regardless of the date system, are characterized by their dual nature. This makes them adaptable and versatile.',
+            'Cancer': 'Cancer (21 June – 23 July / 16 July – 15 August)\nUnder the Moon\'s domain, Cancers are the nurturers of the zodiac. Their emotional depth is profound, often feeling things more intensely than other signs. Whether tropical or sidereal, their protective nature is evident, often shielding loved ones.',
+            'Leo': 'Leo (23 July – 23 August / 16 August – 15 September)\nGoverned by the radiant Sun, Leos are the royalty of the zodiac. Their charisma is undeniable, often drawing others to them effortlessly. Tropical or sidereal, Leos have a regal demeanor, holding their heads high with pride. They\'re born leaders, commanding attention wherever they go.',
+            'Virgo': 'Virgo (23 August – 23 September / 16 September – 15 October)\nUnder Mercury\'s influence, Virgos are the perfectionists of the zodiac. Detail-oriented, nothing escapes their critical eyes. Whether born under tropical or sidereal dates, they strive for excellence in every task. Their analytical minds dissect problems, often coming up with logical solutions.',
+            'Libra': 'Libra, the seventh sign of the zodiac, is represented by the symbol of the Scales, indicating a deep-seated desire for balance and harmony in life. People born under this sign, typically between September 23 and October 22, exhibit a range of personality traits and characteristics.',
+            'Scorpio': 'Scorpio, the eighth sign of the zodiac, encompasses a complex and intense range of personality traits. Those born under this sign, typically between October 23 and November 21, are symbolized by the Scorpion and are ruled by Pluto and traditionally by Mars.',
+            'Sagittarius': 'Sagittarius, the ninth sign of the zodiac, is characterized by a sense of adventure, optimism, and a love for exploration. People born under this sign, typically between November 22 and December 21, are symbolized by the Archer and ruled by Jupiter.',
+            'Capricorn': 'Capricorn, the tenth sign of the zodiac, is known for its disciplined and practical nature. People born under this sign, typically between December 22 and January 19, are symbolized by the Goat and are ruled by Saturn.',
+            'Aquarius': 'Aquarius, the eleventh sign of the zodiac, is associated with uniqueness, innovation, and a strong sense of individuality. People born under this sign, typically between January 20 and February 18, are symbolized by the Water Bearer and are ruled by Uranus.',
+            'Pisces': 'Pisces, the twelfth and final sign of the zodiac, is known for its compassionate, artistic, and deeply emotional nature. People born under this sign, typically between February 19 and March 20, are symbolized by two Fish swimming in opposite directions and are ruled by Neptune.'
+        };
+
+        function getHoroscope(sign) {
+            var resultDiv = document.getElementById('horoscope-result');
+            resultDiv.innerHTML = '<h2>' + sign + '</h2><p>' + horoscopes[sign] + '</p>';
+        }
+    </script>
+</body>
+</html>
